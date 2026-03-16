@@ -40,4 +40,9 @@ public class RentalService
         rental.equipment.IsAvailable = true;
     } 
 
+    public List<Rental> GetOverdueRentals()
+    {
+        return DataStore.Rentals.Where(r => !r.IsReturned && r.dueDate < DateTime.Now).ToList();
+    }
+
 }
