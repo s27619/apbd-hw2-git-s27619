@@ -27,7 +27,7 @@ public class RentalService
         DataStore.Rentals.Add(rental);
     }
 
-        public void ReturnEquipment(Rental rental)
+    public void ReturnEquipment(Rental rental)
     {
         rental.returnDate = DateTime.Now;
 
@@ -39,4 +39,5 @@ public class RentalService
 
         rental.equipment.IsAvailable = true;
     } 
+
 }
