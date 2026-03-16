@@ -34,7 +34,7 @@ public class RentalService
         if (rental.returnDate > rental.dueDate)
         {
             int lateDays = (rental.returnDate.Value - rental.dueDate).Days;
-            rental.penalty = lateDuration.TotalDays * 5; // Example penalty calculation
+            rental.penalty = lateDays * 5; // penalty calculation
         }
 
         rental.equipment.IsAvailable = true;

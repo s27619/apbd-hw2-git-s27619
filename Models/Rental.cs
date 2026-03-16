@@ -1,7 +1,7 @@
 public class Rental
 {
-    public User user { get; set; }
-    public Equipment equipment { get; set; }
+    public User user { get; set; } = null!;
+    public Equipment equipment { get; set; } = null!;
 
     public DateTime rentalDate { get; set; }
     public DateTime dueDate { get; set; }
