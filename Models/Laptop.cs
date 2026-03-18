@@ -1,12 +1,12 @@
 public class Laptop : Equipment
 {
-    public string cpu { get; set; }
-    public int ram { get; set; }
+    public string Cpu { get; set; }
+    public int Ram { get; set; }
 
     public Laptop(int id, string name, string cpu, int ram)
         : base(id, name)
     {
-        this.cpu = cpu;
-        this.ram = ram;
+        Cpu = cpu;
+        Ram = ram;
     }
 }

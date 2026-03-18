@@ -7,7 +7,7 @@ public class RentalService
             throw new Exception("Equipment is not available for rent.");
         }
 
-        int activeRentals = DataStore.Rentals.Count(r => r.user.Id == user.Id && !r.IsReturned);
+        int activeRentals = DataStore.Rentals.Count(r => r.User.Id == user.Id && !r.IsReturned);
 
         if (activeRentals >= user.MaxRentals)
         {
@@ -16,11 +16,11 @@ public class RentalService
 
         Rental rental = new Rental
         {
-            user = user,
-            equipment = equipment,
-            rentalDate = DateTime.Now,
-            dueDate = DateTime.Now.AddDays(days),
-            penalty = 0
+            User = user,
+            Equipment = equipment,
+            RentalDate = DateTime.Now,
+            DueDate = DateTime.Now.AddDays(days),
+            Penalty = 0
         };
 
         equipment.IsAvailable = false;
@@ -29,20 +29,20 @@ public class RentalService
 
     public void ReturnEquipment(Rental rental)
     {
-        rental.returnDate = DateTime.Now;
+        rental.ReturnDate = DateTime.Now;
 
-        if (rental.returnDate > rental.dueDate)
+        if (rental.ReturnDate > rental.DueDate)
         {
-            int lateDays = (rental.returnDate.Value - rental.dueDate).Days;
-            rental.penalty = lateDays * 5; // penalty calculation
+            int lateDays = (rental.ReturnDate.Value - rental.DueDate).Days;
+            rental.Penalty = lateDays * 5; // penalty calculation
         }
 
-        rental.equipment.IsAvailable = true;
+        rental.Equipment.IsAvailable = true;
     } 
 
     public List<Rental> GetOverdueRentals()
     {
-        return DataStore.Rentals.Where(r => !r.IsReturned && r.dueDate < DateTime.Now).ToList();
+        return DataStore.Rentals.Where(r => !r.IsReturned && r.DueDate < DateTime.Now).ToList();
     }
 
 }

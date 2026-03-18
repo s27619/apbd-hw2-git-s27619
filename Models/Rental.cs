@@ -1,13 +1,13 @@
 public class Rental
 {
-    public User user { get; set; } = null!;
-    public Equipment equipment { get; set; } = null!;
+    public User User { get; set; } = null!;
+    public Equipment Equipment { get; set; } = null!;
 
-    public DateTime rentalDate { get; set; }
-    public DateTime dueDate { get; set; }
-    public DateTime? returnDate { get; set; }
+    public DateTime RentalDate  { get; set; }
+    public DateTime DueDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
 
-    public double penalty { get; set; }
+    public double Penalty { get; set; }
 
-    public bool IsReturned => returnDate != null;
+    public bool IsReturned => ReturnDate != null;
 }
